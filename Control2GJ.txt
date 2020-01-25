@@ -38,5 +38,3 @@ En package.json -> scripts ->
 "serve": "nodemon index.js", //En curso usan start en vez de serve. (Se ejecuta con npm run serve).
 
 //Crear el servidor Web.
-En app.js ->
-

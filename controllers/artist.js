@@ -2,6 +2,7 @@
 
 var path = require('path');
 var fs = require('fs');
+var moongoosePagination = require('mongoose-Pagination');
 
 var Artist = require('../models/artist');
 var Album = require('../models/album');
@@ -22,6 +23,35 @@ function getArtist(req, res){
         }
     });
 }
+
+
+function getArtists(req, res){
+    var page = 0;
+    if(req.params.page){
+        page = req = req.params.page;
+    }else{
+        page = 1;
+    }
+    var page = req.params.page;
+    var itemsPerPage = 3;
+
+    Artist.find().sort('name').paginate(page, itemsPerPage, function(err, artists, total){
+        if(err){
+            res.status(500).send({message: 'Error en la peticion'});
+        }else{
+            if(!artists){
+                res.status(404).send({message: 'No hay artistas'});
+            }else{
+                return res.status(200).send({
+                    pages: total,
+                    artists: artists
+                });
+            }
+        }
+    });
+}
+
+
 
 function saveArtist(req, res){
     var artist = new Artist();
@@ -47,5 +77,6 @@ function saveArtist(req, res){
 
 module.exports = {
     getArtist,
+    getArtists,
     saveArtist
 };
