@@ -1,0 +1,42 @@
+//Creacion de package.json.
+npm init
+
+//Instalacion de dependencias.
+npm install express --save
+npm install bcrypt-nodejs --save
+npm install body-parse --save
+npm install connect-multiparty --save
+npm install jwt-simple --save
+npm install moment --save
+npm install mongoose --save
+npm install mongoose-pagination --save
+npm install nodemon --save-dev
+
+    //Si requiero desinstalar una dependencia 
+    npm uninstall mongoose --save
+
+//Crear Base De Datos (MongoDB) --Controlador mon
+use curso_mean2;
+db.artist.save({name: 'Delafunete', description: 'Musica Trap Floklorica', image:'null'});
+db.artist.find();
+show dbs;
+
+//Crear conexion con base de datos.
+En index.js -> 
+//Conexion de base de datos.
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/curso_mean2', (err, res) => {
+    if(err){
+        throw err;
+    }else{
+        console.log("La base de datos esta corriendo correctamente...");
+    }
+});
+
+//Utilizar nodemon.
+En package.json -> scripts ->
+"serve": "nodemon index.js", //En curso usan start en vez de serve. (Se ejecuta con npm run serve).
+
+//Crear el servidor Web.
+En app.js ->
+
