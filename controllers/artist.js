@@ -76,8 +76,32 @@ function saveArtist(req, res){
 }
 
 
+function updateArtist(req, res){
+
+    console.log("Metodo Update (Artist)");
+    console.log("id: " + req.params.id);
+    
+    var artistId = req.params.id;
+    var update = req.body;
+
+    console.log("A1");
+
+    Artist.findByIdAndUpdate(artistId, update, (err, artistUpdate) => {
+        if(err){
+            res.status(500).send({message: 'Error al guardar el artista'});
+        }else{
+            if(!artistUpdate){
+                res.status(404).send({message: 'Error el artista no se actualizo'});
+            }else{
+                res.status(200).send({artist: artistUpdate});
+            }
+        }
+    });
+}
+
 module.exports = {
     getArtist,
     getArtists,
-    saveArtist
+    saveArtist,
+    updateArtist
 };
