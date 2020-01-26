@@ -9,7 +9,7 @@ var multipart = require('connect-multiparty');
 var md_upload = multipart({ uploadDir: './Uploads/albums'});
 
 api.get('/album/:id', md_auth.ensureAuth, AlbumController.getAlbum);
-//api.get('/artists/:page?', md_auth.ensureAuth, ArtistController.getArtists);
+api.get('/albums/:artist?', md_auth.ensureAuth, AlbumController.getAlbums);
 api.post('/album', md_auth.ensureAuth, AlbumController.saveAlbum);
 //api.put('/artist/:id', md_auth.ensureAuth, ArtistController.updateArtist);
 //api.delete('/artist/:id', md_auth.ensureAuth, ArtistController.deleteArtist);
@@ -17,3 +17,4 @@ api.post('/album', md_auth.ensureAuth, AlbumController.saveAlbum);
 //api.get('/get-image-artist/:imageFile', ArtistController.getImageFile);
 
 module.exports = api;
+
