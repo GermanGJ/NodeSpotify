@@ -1,0 +1,6 @@
+db.artists.save({"name":"Extremoduro","description":"Rock español duro","image":"null"});
+db.artists.save({"name":"Metallica","description":"heavy ,etal, Tharsh metal","image":"null"});
+db.artists.save({"name":"Morat","description":"Pop balcanico","image":"null"});
+db.artists.save({"name":"Soda Stereo","description":"Rock alternativo, New wave Pop rock","image":"null"});
+db.artists.save({"name":" Hombres G","description":"RockRock Pop, Pop, New Wave, garage rock","image":"null"});
+db.artists.save({"name":"Ruben Blades","description":"Salsa","image":"null"});

@@ -26,13 +26,14 @@ function getArtist(req, res){
 
 
 function getArtists(req, res){
-    var page = 0;
+
+    console.log("InPages: " + req.params.page);
+
     if(req.params.page){
-        page = req = req.params.page;
+        var page = req = req.params.page;
     }else{
-        page = 1;
+        var page = 1;
     }
-    var page = req.params.page;
     var itemsPerPage = 3;
 
     Artist.find().sort('name').paginate(page, itemsPerPage, function(err, artists, total){
