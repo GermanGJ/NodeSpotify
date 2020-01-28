@@ -30,3 +30,5 @@ db.artists.save({"name":"Hombres G","description":"RockRock Pop, Pop, New Wave, 
 db.artists.save({"name":"Ruben Blades","description":"Salsa","image":"null"});
 
 show dbs;
+
+Test Mac
