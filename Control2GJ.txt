@@ -13,7 +13,7 @@ npm install moment --save
 npm install mongoose --save
 npm install mongoose-pagination --save
 npm install nodemon --save-dev
-
+npm
     //Si requiero desinstalar una dependencia 
     npm uninstall mongoose --save
 
