@@ -60,6 +60,7 @@ function loginUser(req, res){
     var password = params.password;
 
     console.log(params);
+    console.log("Inicio Metodo Login");
 
     User.findOne({email: email.toLowerCase()}, (err, user) => {
         if (err){
@@ -69,19 +70,25 @@ function loginUser(req, res){
             if(!user){
                 res.status(404).send({message: 'El usuario no existe.'});
             }else{
+                console.log("Pss IN: " + password);
+                console.log("Pss BD: " + user.password);
                 //Comparar la contraseña.
                 bcrypt.compare(password, user.password, function(err, check){
+                    console.log(check);
                     if(check){
                         //Devolver los datos del usuario.
                         if(params.gethash){
                             //Devolver token con jwt
+                            console.log("R OKOK");
                             res.status(200).send({
                                 token: jwt.createToken(user)
                             });
                         }else{
+                            console.log("RNO GETHASH");
                             res.status(200).send({user});
                         }
                     }else{
+                        console.log("RCHECHK");
                         res.status(404).send({message: 'Usuario no puede logearse.'});
                     }
                 });
