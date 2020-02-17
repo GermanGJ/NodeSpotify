@@ -99,12 +99,23 @@ function loginUser(req, res){
 
 function updateUser(req, res){
 
-    console.log("req(updateUser): " + req);
+    //console.log("req(updateUser): " + req);
+    //console.log("req(body): " + req.body);
 
     var userId = req.params.id;
     var update = req.body;
 
+    console.log('Id: ' + userId);
+    console.log('IdSub: ' + req.body.sub);
+
+    /*
+    if(userId == req.user.sub){
+        res.status(500).send({message: 'No tienes permiso para actualizar este usuario.'});
+    }
+    */
+
     User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
+        console.log('err: ' + err);
         if(err){
             res.status(500).send({message: 'Error al actualizar el usuario.'});
         }else{

@@ -40,7 +40,7 @@ export class UserService{
     }
 
 
-    update_user(user_to_update){
+    update_User(user_to_update){
         let json = JSON.stringify(user_to_update);
         let params = json;
 
